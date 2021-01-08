@@ -1,0 +1,19 @@
+name: block-expoler
+description: a bitcoin block expoler
+group: static
+main: build
+author:
+  name: ezioruan
+specVersion: 1.0.0
+version: 0.1.0
+files:
+  - blocklet.md
+  - screenshots
+  - build
+interfaces:
+  - type: web
+    name: publicUrl
+    path: /
+    prefix: '*'
+    port: BLOCKLET_PORT
+    protocol: http

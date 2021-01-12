@@ -1,7 +1,10 @@
 TOP_DIR=.
 README=$(TOP_DIR)/README.md
 
-VERSION=$(strip $(shell cat version))
+VERSION=v$(strip $(shell cat package.json | grep version | head -n 1 |  awk '{print $2}' | sed 's/"//g' | sed 's/,//g'))
+RELEASE_VERSION=$(VERSION)
+GIT_BRANCH=$(strip $(shell git symbolic-ref --short HEAD))
+GIT_VERSION="$(strip $(shell git rev-parse --short HEAD))"
 
 build:
 	@echo "Building the software..."
@@ -47,6 +50,11 @@ run:
 	@echo "Running the software..."
 	@yarn start
 
-include .makefiles/*.mk
 
-.PHONY: build init install dep pre-build post-build all test doc precommit github-action-test clean watch run bump-version create-pr
+release:
+	@git config --local user.name "ezioruan"
+	@git config --local user.email "ezioruan@gmail.com"
+	@git tag -a $(RELEASE_VERSION) -m "Release $(RELEASE_VERSION). Revision is: $(GIT_VERSION)" | true
+	@git push origin $(RELEASE_VERSION) | true
+
+.PHONY: build init install dep pre-build post-build all test doc precommit github-action-test clean watch run bump-version create-pr 

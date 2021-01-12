@@ -1,8 +1,10 @@
-# A BlockExploer
+# Block Expoler
+a bitcoin block exploer build by react
 
 
-## Available Scripts
+# dev 
+```
+npm run dev
+```
 
-
-### `npm start`
 

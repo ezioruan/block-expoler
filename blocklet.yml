@@ -1,7 +1,7 @@
 name: block-expoler
 description: ABT Node blocklet project
-group: dapp
-main: backend/app.js
+group: static
+main: build
 author:
   name: ezioruan
 specVersion: 1.0.0

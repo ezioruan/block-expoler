@@ -1,6 +1,6 @@
 set -e
 
-VERSION=$(cat version | awk '{$1=$1;print}')
+VERSION=$(cat package.json | grep version | head -n 1 |  awk '{print $2}' | sed 's/"//g' | sed 's/,//g')
 echo "publish version ${VERSION}"
 
 git config --local user.name "ezioruan"

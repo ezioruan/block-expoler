@@ -24,7 +24,7 @@
     "lint": "standard src/**/*.js  test/**/*.js --env mocha",
     "lint:fix": "npm run lint -- --fix",
     "clean": "rm -rf .blocklet",
-    "bundle": "npm run clean && blocklet bundle --zip --create-release",
+    "bundle": "npm run clean npm run build && blocklet bundle --zip --create-release",
     "deploy": "npm run bundle && blocklet deploy .blocklet/bundle"
   },
   "eslintConfig": {

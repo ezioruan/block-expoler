@@ -19,6 +19,25 @@ const useStyles = makeStyles((theme) => ({
   }
 }))
 
+
+const  getTotalOutPut = out => out.reduce((a, b) => a + b.value, 0)
+
+const getFee = row => {
+    let totalInput = 0
+    if (row.inputs[0].witness === '0000000000000000000000000000000000000000000000000000000000000000') {
+        return 0
+    }
+    for (let input of row.inputs) {
+        if (input.prev_out && input.prev_out.value > 0) {
+            totalInput += input.prev_out.value
+        } 
+    }
+    const totalOutPut = getTotalOutPut(row.out)
+    return  totalInput -totalOutPut
+} 
+
+
+
 function BlockTransactions (props) {
   const [page, setPage] = useState(0)
   const pageSize = 10
@@ -89,14 +108,14 @@ function BlockTransactions (props) {
               <Grid container spacing={3}>
                 <Grid item xs={1}><p>Fee</p></Grid>
                 <Grid item xs={4}>
-                  <p>0.00050000 BTC</p>
+                <p>{(getFee(row)/ 100000000).toFixed(8)} BTC</p>
                   <p>(130.890 sat/B - 65.274 sat/WU - 382 bytes)</p>
                 </Grid>
                 <Grid item xs={3} />
                 <Grid item xs={2} />
                 <Grid item xs={2}>
                   <p>
-                    {(row.out.reduce((a, b) => a + b.value, 0) / 100000000).toFixed(8)} BTC
+                    {(getTotalOutPut(row.out)/ 100000000).toFixed(8)} BTC
                   </p>
                 </Grid>
               </Grid>

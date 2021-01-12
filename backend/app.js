@@ -6,14 +6,13 @@ const historyApiFallback = require('koa-history-api-fallback')
 const app = new Koa()
 
 const router = require('./router')
-console.log('router', router)
 
 const port = Number(process.env.BLOCKLET_PORT || 3030)
 
 const srcDir = path.resolve(
   path.join(path.dirname(__dirname))
 )
-const webDistDir = path.join(srcDir, 'frontend', 'build')
+const webDistDir = path.join(srcDir, 'build')
 
 const staticServe = new Koa()
 staticServe.use(historyApiFallback())

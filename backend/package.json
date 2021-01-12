@@ -1,0 +1,23 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "dependencies": {
+    "@koa/router": "^10.0.0",
+    "axios": "^0.21.1",
+    "koa": "^2.13.1",
+    "koa-history-api-fallback": "^1.0.0",
+    "koa-mount": "^4.0.0",
+    "koa-static": "^5.0.0",
+    "standard": "^16.0.3"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "lint": "standard --env mocha",
+    "lint:fix": "npm run lint -- --fix",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}

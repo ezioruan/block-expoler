@@ -5,10 +5,6 @@
 # Block Expoler
 a bitcoin block exploer build by react
 
-
-
-A bitcoin block view build by react 
-
 ## frontend 
 - setup by create-react-app
 - use new code style hock functions

@@ -7,6 +7,8 @@ echo "publish version ${RELEASE_VERSION}"
 
 git config --local user.name "ezioruan"
 git config --local user.email "ezioruan@gmail.com"
+sudo npm install -g @abtnode/cli
+npm install
 npm run bundle
 
 git tag -a ${RELEASE_VERSION} -m "Release ${RELEASE_VERSION}. Revision is: ${GIT_VERSION}" | true
